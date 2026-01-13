@@ -128,4 +128,31 @@ const Cart = () => {
             
             <div className="summary-row">
               <span>Tax</span>
-              <span>Calculated at ch
+              <span>Calculated at checkout</span>
+            </div>
+            
+            <div className="summary-divider"></div>
+            
+            <div className="summary-row total">
+              <span>Total</span>
+              <span>${totalPrice.toFixed(2)}</span>
+            </div>
+
+            <button onClick={handleCheckout} className="checkout-btn">
+              Proceed to Checkout
+            </button>
+
+            <button
+              onClick={() => navigate('/')}
+              className="continue-shopping-link"
+            >
+              Continue Shopping
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Cart;

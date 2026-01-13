@@ -72,4 +72,53 @@ const Orders = () => {
               </div>
 
               <div className="order-items">
-                {order.items.slice(0, 3).map((item)
+                {order.items.slice(0, 3).map((item) => (
+                  <div key={item._id} className="order-item-preview">
+                    <img
+                      src={item.product?.imageUrl}
+                      alt={item.name}
+                      className="order-item-image"
+                    />
+                    <div className="order-item-info">
+                      <p>{item.name}</p>
+                      <p className="order-item-details">
+                        Size: {item.size} | Qty: {item.quantity}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                {order.items.length > 3 && (
+                  <p className="more-items">+{order.items.length - 3} more items</p>
+                )}
+              </div>
+
+              <div className="order-footer">
+                <div className="order-total">
+                  <span>Total:</span>
+                  <span className="order-price">${order.totalPrice.toFixed(2)}</span>
+                </div>
+                <button
+                  onClick={() => navigate(`/orders/${order._id}`)}
+                  className="view-order-btn"
+                >
+                  <Eye size={18} />
+                  View Details
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {data && data.pages > 1 && (
+          <Pagination
+            currentPage={page}
+            totalPages={data.pages}
+            onPageChange={handlePageChange}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Orders;

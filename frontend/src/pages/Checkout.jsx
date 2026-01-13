@@ -102,3 +102,42 @@ const Checkout = () => {
                   This is a mock checkout. No real payment will be processed.
                 </p>
               </div>
+
+              <div className="checkout-total">
+                <div className="total-row">
+                  <span>Subtotal</span>
+                  <span>${totalPrice.toFixed(2)}</span>
+                </div>
+                <div className="total-row">
+                  <span>Shipping</span>
+                  <span>Free</span>
+                </div>
+                <div className="total-row">
+                  <span>Tax</span>
+                  <span>$0.00</span>
+                </div>
+                <div className="total-divider"></div>
+                <div className="total-row total">
+                  <span>Total</span>
+                  <span>${totalPrice.toFixed(2)}</span>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="place-order-btn"
+                disabled={loading || checkoutMutation.isLoading}
+              >
+                {loading || checkoutMutation.isLoading
+                  ? 'Processing...'
+                  : 'Place Order'}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Checkout;
